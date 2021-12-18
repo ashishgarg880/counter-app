@@ -5,10 +5,12 @@ export const Todos=(props)=>
 {    
     return (
         <div className="container">
-            <h3>Hello Todos</h3>
-            <p>{props.title}</p>
-            {/* {   props.todos} */}
-            <TodoItems todos={props.todos[0]}/>
+            <h3 className='my-3'>Hello Todos</h3>
+            {props.todos.length===0?"No item found:":
+                props.todos.map((todos)=>{
+                return <TodoItems todos={todos} key={todos.id} onDelete={props.onDelete}/>
+                })
+            }
         </div>
     )
 }
